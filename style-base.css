@@ -1,0 +1,109 @@
+
+ /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, input {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* hasta aqui el reseteo de los estilos prediseñados de los buscadores
+*/
+
+ 
+    /* This is our style for the invalid fields */
+    input:invalid {
+        border-color: #900;
+        background-color: aquamarine;
+        }
+        
+        input:focus:invalid {
+        outline: none;
+        }
+        
+        /* This is the style of our error messages */
+        .error {
+        width: 100%;
+        padding: 0;
+        
+        font-size: 1rem;
+        color: white;
+        background-color: #900;
+        border-radius: 0 0 5px 5px;
+        
+        box-sizing: border-box;
+        }
+        
+        .error.active {
+        padding: 0.3em;
+        }
+
+ /*  style base  */
+
+        .myButton {
+            width: 20%;
+            box-sizing: border-box;
+            background-color: #596D48; font-size: 1rem; line-height: 16px; padding: 6px; border-radius: 10px; font-family: Georgia, serif; font-weight: normal; text-decoration: none; font-style: normal; font-variant: normal; text-transform: none; background-image: linear-gradient(to right, #9CBE7E 0%, #7A9663 50%, #9CBE7E 100%); box-shadow: rgb(0, 0, 0) 2px 2px 5px 2px; border: 2px solid #596D48; display: inline-block;}
+        .myButton:hover {
+        background: #5B6F4A; }
+        .myButton:active {
+        background: #9CBE7E; }
+        
+        
+        .initial{
+            background: linear-gradient(to right, #246EBB 0%, #FF99F6 56%, #5EC911 100%); 
+        }
+        
+        .mild-weather{
+        background: linear-gradient(to right, #FF99F6 0%, #FFE3FE 56%, #5EC911 100%); ;
+        }
+        
+        .hot-weather{
+        background: linear-gradient(to right, #FFDA46 0%, #FF4B18 56%, #f2ff0d 100%);
+        }
+        
+        .cold-weather{
+        background: linear-gradient(to right, #43E5A0 0%, #DAFEEF 56%, #246EBB 100%);
+        }
+ 
