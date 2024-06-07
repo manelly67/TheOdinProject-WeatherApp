@@ -9,7 +9,7 @@ const divTemporal = document.createElement('div');
 container.classList.add('container','initial');
 divTemporal.classList.add('temporal');
 divTemporal.classList.add('initial');
-header.innerText = 'The Weather Api';
+header.innerText = 'The Weather App';
 header.setAttribute('style','font-size: 2rem;display: flex;justify-content: center;text-transform: uppercase;');
 searchForm.setAttribute('id','form');
 searchForm.setAttribute('novalidate', '');
