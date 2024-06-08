@@ -20,7 +20,7 @@ searchInput.setAttribute('id','location');
 searchInput.setAttribute('name','location');
 searchInput.setAttribute('type','text');
 searchInput.setAttribute('required','');
-searchInput.setAttribute('pattern','^[a-zA-Z0-9]+$');
+searchInput.setAttribute('pattern','^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜàÀâÂãÃçÇêÊôÔõÕ ]+$');
 
 searchButton.setAttribute('type','submit');
 searchButton.innerText = 'SEARCH';
@@ -71,8 +71,7 @@ function removePreviousData(){
 }
 
 const readData = (arg) => {   
-  /* tendrá el argumento el archivo json - por los momentos utilizaré el local storage */
-  /* let weatherData = JSON.parse(localStorage.getItem("weatherData")); */
+  /* arg es el archivo json con los datos */
   let weatherData = arg;
   let data = {
     place : `${weatherData.location.name.toUpperCase()} - ${weatherData.location.region}`,
@@ -105,6 +104,8 @@ const readData = (arg) => {
 function updateUrl(arg) {
     // arg is the location enter
     arg = arg.toLowerCase();
+    arg = arg.replace(/( )/gm, "_");
+    console.log(arg);
     weatherapiUrl = `https://api.weatherapi.com/v1/current.json?key=8e1ecc57edb74e0a8ca192317240506&q=${arg}`;
     return weatherapiUrl;
   }
@@ -115,43 +116,11 @@ async function getWeatherData(arg) {
     const response = await fetch(arg, { mode: 'cors' });
     const weatherData = await response.json();
     console.log(weatherData);
-    // guardar en localStorage solo mientras termino el diseño y las pruebas
-   /*  localStorage.setItem('weatherData', JSON.stringify(weatherData)); */
     readData(weatherData);
     }catch (error) {
         alert('Something was wrong. try again later');
       } 
   }
-
-searchInput.addEventListener('input', (event) => {
-  deleteDivError(searchInput); // Remove previous error messages
-  console.log(searchInput.validity.patternMismatch);
-  if (searchInput.validity.patternMismatch) {
-    showError(searchInput, 'This is not a valid location');
-    event.preventDefault();
-  } 
-});
-
-searchForm.addEventListener('submit', function (event) {
-  event.preventDefault();
-  deleteDivError(searchInput);
-
-  let location = document.getElementById('location').value;
-
-  if (
-    searchInput.validity.valueMissing | searchInput.validity.patternMismatch
-  ) {
-    event.preventDefault();
-    showError(searchInput, 'You must enter a valid location to search for');
-  } else {
-    console.log(searchInput.validity.valueMissing);
-    console.log(location);
-    weatherapiUrl = updateUrl(location);
-    console.log(weatherapiUrl);
-    getWeatherData(weatherapiUrl);
-    document.getElementById('form').reset();
-  }
-});
 
 function displayData(data){
 
@@ -293,3 +262,33 @@ function updateIcon(data,imgCloudUv){
     console.log(img.src);
     return img.src;
 }
+
+searchInput.addEventListener('input', (event) => {
+  deleteDivError(searchInput); // Remove previous error messages
+  console.log(searchInput.validity.patternMismatch);
+  if (searchInput.validity.patternMismatch) {
+    showError(searchInput, 'This is not a valid location');
+    event.preventDefault();
+  } 
+});
+
+searchForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+  deleteDivError(searchInput);
+
+  let location = document.getElementById('location').value;
+
+  if (
+    searchInput.validity.valueMissing | searchInput.validity.patternMismatch
+  ) {
+    event.preventDefault();
+    showError(searchInput, 'You must enter a valid location to search for');
+  } else {
+    console.log(searchInput.validity.valueMissing);
+    console.log(location);
+    weatherapiUrl = updateUrl(location);
+    console.log(weatherapiUrl);
+    getWeatherData(weatherapiUrl);
+    document.getElementById('form').reset();
+  }
+});
